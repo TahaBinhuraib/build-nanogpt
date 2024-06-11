@@ -27,6 +27,7 @@ The validation set of HellaSwag has a total of 10,042 examples.
 
 import os
 import json
+print('3')
 import requests
 import tiktoken
 from tqdm import tqdm
@@ -34,6 +35,7 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 from transformers import GPT2LMHeadModel
+print('4')
 
 # -----------------------------------------------------------------------------
 DATA_CACHE_DIR = os.path.join(os.path.dirname(__file__), "hellaswag")

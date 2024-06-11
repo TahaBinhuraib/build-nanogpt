@@ -10,13 +10,19 @@ Will save shards to the local directory "edu_fineweb10B".
 import os
 import multiprocessing as mp
 import numpy as np
+#PATH_HF = "/ctb/data/"
+#os.environ['TRANSFORMERS_CACHE'] = PATH_HF
+#os.environ['TRANSFORMERS_CACHE'] = PATH_HF
+#os.environ['HF_HOME'] = PATH_HF
+#os.environ['HF_DATASETS_CACHE'] = PATH_HF
+#os.environ['TORCH_HOME'] = PATH_HF
+
 import tiktoken
-os.environ['TRANSFORMERS_CACHE'] = '/ctb/data/'
 from datasets import load_dataset # pip install datasets
 from tqdm import tqdm # pip install tqdm
 
 # ------------------------------------------
-local_dir = "/ctb/data/"
+local_dir = "fineweb_local"
 remote_name = "sample-10BT"
 shard_size = int(1e8) # 100M tokens per shard, total of 100 shards
 
@@ -78,6 +84,7 @@ with mp.Pool(nprocs) as pool:
 
     # write any remaining tokens as the last shard
     if token_count != 0:
+        print('am i here')
         split = "val" if shard_index == 0 else "train"
         filename = os.path.join(DATA_CACHE_DIR, f"edufineweb_{split}_{shard_index:06d}")
         write_datafile(filename, all_tokens_np[:token_count])
