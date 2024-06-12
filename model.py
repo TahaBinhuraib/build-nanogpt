@@ -2,13 +2,10 @@ import os
 import math
 import time
 import inspect
-print('1')
 from dataclasses import dataclass
-print('2')
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
-from hellaswag import render_example, iterate_examples
 from topoformer import AttentionHead, LocallyConnected
 
 device = "cuda"
